@@ -16,6 +16,21 @@ const userSchema = new mongoose.Schema({
     minlength: [4, "Password must be minimum 4 characters."],
     select: false,
   },
+  name: {
+    type: String,
+    required: [true, "Please provide your name for customers."],
+    minlength: [3, "Name needs to be at least 3 characters."],
+  },
+  intro: {
+    type: String,
+  },
+  phone: {
+    type: String,
+    minlength: [6, "Phone needs to be min 6 characters."],
+  },
+  dishes: {
+    type: Array,
+  },
 });
 
 userSchema.pre("save", async function (next) {

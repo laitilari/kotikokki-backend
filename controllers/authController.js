@@ -13,6 +13,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     email: req.body.email,
     password: req.body.password,
+    name: req.body.name,
   });
 
   const token = signToken(newUser._id);
@@ -34,16 +35,28 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError("Please provide email and password!", 400));
   }
 
-  const user = await User.findOne({ email }).select("+password");
+  const user = await User.findOne({ email })
+    .select("+password")
+    .select("+name")
+    .select("+dishes")
+    .select("+intro");
 
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError("Incorrect email or password", 401));
   }
 
-  const token = signToken(user._id);
+  const userId = user._id;
+  const name = user.name;
+  const phone = user.phone;
+  const intro = user.intro;
+  const token = signToken(userId);
 
   res.status(200).json({
     status: "success",
     token,
+    userId,
+    name,
+    intro,
+    phone,
   });
 });
