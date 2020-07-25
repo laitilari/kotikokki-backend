@@ -16,6 +16,9 @@
   "bugs": {
     "url": "https://github.com/laitilari/kotikokki-backend/issues"
   },
+  "engines": {
+    "node": "v12.16.1"
+  },
   "homepage": "https://github.com/laitilari/kotikokki-backend#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
