@@ -23,10 +23,11 @@ const userSchema = new mongoose.Schema({
   },
   intro: {
     type: String,
+    default: "No introduction yet.",
   },
   phone: {
     type: String,
-    minlength: [6, "Phone needs to be min 6 characters."],
+    default: "No contact info yet.",
   },
   dishes: {
     type: Array,
