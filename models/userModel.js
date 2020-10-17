@@ -29,6 +29,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "No contact info yet.",
   },
+  isChef:{
+    type:Boolean,
+    default:false
+  },
   dishes: {
     type: Array,
   },

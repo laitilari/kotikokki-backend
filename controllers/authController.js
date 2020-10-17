@@ -40,14 +40,14 @@ exports.login = catchAsync(async (req, res, next) => {
     .select("+name")
     .select("+dishes")
     .select("+intro")
-    .select("+phone");
+    .select("+phone").select("+isChef");
 
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError("Incorrect email or password", 401));
   }
 
   const userId = user._id;
-  const { name, phone, intro, dishes } = user;
+  const { name, phone, intro, dishes ,isChef} = user;
   const token = signToken(userId);
 
   res.status(200).json({
@@ -58,5 +58,6 @@ exports.login = catchAsync(async (req, res, next) => {
     intro,
     phone,
     dishes,
+    isChef
   });
 });

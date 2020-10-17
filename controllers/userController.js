@@ -28,6 +28,18 @@ exports.getUser = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getAllChefs = catchAsync(async(req, res)=>{
+  const chefs = await User.find({isChef:true});
+  res.status(200).json({
+    status:"success",
+    requestedAt:req.requestTime,
+    results:chefs.length,
+    data:{
+      chefs
+    }
+  })
+})
+
 exports.createUser = catchAsync(async (req, res, next) => {
   const user = await User.create(req.body);
   res.status(200).json({
