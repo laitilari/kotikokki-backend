@@ -33,10 +33,13 @@ const userSchema = new mongoose.Schema({
     type:Boolean,
     required:true
   },
-  dishes: {
-    type: Array,
-  },
-});
+  dishes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Dish"
+    }
+  ]
+  });
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
