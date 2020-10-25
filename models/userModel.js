@@ -33,12 +33,7 @@ const userSchema = new mongoose.Schema({
     type:Boolean,
     required:true
   },
-  dishes: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Dish"
-    }
-  ]
+  dishes: []
   });
 
 userSchema.pre("save", async function (next) {
