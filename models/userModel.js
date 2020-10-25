@@ -29,10 +29,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "No contact info yet.",
   },
-  dishes: {
-    type: Array,
+  isChef:{
+    type:Boolean,
+    required:true
   },
-});
+  dishes: []
+  });
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
