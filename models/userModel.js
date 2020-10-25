@@ -31,12 +31,10 @@ const userSchema = new mongoose.Schema({
   },
   isChef:{
     type:Boolean,
-    default:false
+    required:true
   },
-  dishes: {
-    type: Array,
-  },
-});
+  dishes: []
+  });
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();

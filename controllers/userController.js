@@ -1,8 +1,9 @@
 const User = require("../models/userModel");
 const catchAsync = require("./../utils/catchAsync");
+const Dish = require('../models/dishModel');
 
-exports.getAllUsers = catchAsync(async (req, res) => {
-  const users = await User.find();
+exports.getAllChefs = catchAsync(async (req, res) => {
+  const users = await User.find({isChef:true});
 
   res.status(200).json({
     status: "success",
@@ -61,6 +62,7 @@ exports.updateUser = catchAsync(async (req, res) => {
     requestedAt: req.requestTime,
     data: {
       user,
+      
     },
   });
 });
