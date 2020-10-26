@@ -4,7 +4,7 @@
   "description": "Platform for amateur chefs",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon start",
     "test": "npm test"
   },
   "repository": {
