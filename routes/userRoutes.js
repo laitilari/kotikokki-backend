@@ -1,6 +1,5 @@
 const express = require("express");
 const {
-  getAllChefs,
   getUser,
   createUser,
   updateUser,
