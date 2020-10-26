@@ -39,7 +39,6 @@ exports.login = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ email })
     .select("+password")
     .select("+name")
-    .select("+dishes")
     .select("+intro")
     .select("+phone").select("+isChef");
 

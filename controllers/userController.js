@@ -1,6 +1,5 @@
 const User = require("../models/userModel");
 const catchAsync = require("./../utils/catchAsync");
-const Dish = require('../models/dishModel');
 
 exports.getAllChefs = catchAsync(async (req, res) => {
   const users = await User.find({isChef:true});
